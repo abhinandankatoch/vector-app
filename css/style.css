@@ -385,6 +385,13 @@ body.theme-cyan   { --accent: #22D3EE; --accent-glow: rgba(34,211,238,0.35); }
   font-weight: 600;
   color: var(--text-primary);
 }
+.made-with-name {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
 
 /* Small Screens */
 @media (max-height: 700px) {
