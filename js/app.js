@@ -1,4 +1,4 @@
-// ===== Vector app.js — Step 2: skeleton, navigation, theme + unit settings =====
+// Vector app.js — Skeleton, Navigation, Theme and Unit Settings
 
 const STORAGE_KEY = 'vector-settings';
 
@@ -24,7 +24,10 @@ function saveSettings(settings) {
 
 let settings = loadSettings();
 
-// ===== Elements =====
+window.Vector = window.Vector || {};
+window.Vector.settings = settings;
+
+// Elements
 const body = document.body;
 const screenTitle = document.getElementById('screenTitle');
 const menuBtn = document.getElementById('menuBtn');
@@ -45,7 +48,7 @@ const unitOptions = document.getElementById('unitOptions');
 
 const VIEW_TITLES = { speed: 'Speedometer', compass: 'Compass' };
 
-// ===== View switching =====
+// View Switching
 function applyView(view) {
   settings.view = view;
   body.dataset.view = view;
@@ -68,7 +71,7 @@ navBtns.forEach(btn => {
   btn.addEventListener('click', () => applyView(btn.dataset.target));
 });
 
-// ===== Dropdown menu =====
+// Dropdown Menu
 function closeDropdown() { dropdownMenu.hidden = true; }
 
 menuBtn.addEventListener('click', (e) => {
@@ -78,7 +81,7 @@ menuBtn.addEventListener('click', (e) => {
 document.addEventListener('click', closeDropdown);
 dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
 
-// ===== Modals =====
+// Modals
 function openModal(modal) { modal.hidden = false; closeDropdown(); }
 function closeModal(modal) { modal.hidden = true; }
 
@@ -93,7 +96,7 @@ closeAboutBtn.addEventListener('click', () => closeModal(aboutModal));
   });
 });
 
-// ===== Theme selection =====
+// Theme Selection
 function applyTheme(theme) {
   settings.theme = theme;
   body.className = `theme-${theme}`;
@@ -109,7 +112,7 @@ themeOptions.querySelectorAll('.swatch').forEach(sw => {
   sw.addEventListener('click', () => applyTheme(sw.dataset.theme));
 });
 
-// ===== Unit selection =====
+// Unit Selection
 function applyUnit(unit) {
   settings.unit = unit;
 
@@ -118,13 +121,14 @@ function applyUnit(unit) {
   });
 
   saveSettings(settings);
+  document.dispatchEvent(new CustomEvent('vector:unitchange', { detail: unit }));
 }
 
 unitOptions.querySelectorAll('.option-btn').forEach(btn => {
   btn.addEventListener('click', () => applyUnit(btn.dataset.unit));
 });
 
-// ===== Init =====
+// Init
 applyView(settings.view);
 applyTheme(settings.theme);
 applyUnit(settings.unit);
