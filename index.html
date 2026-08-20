@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#05070a">
+<title>Vector</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-blue" data-view="speed">
+
+<div class="app">
+
+  <header class="topbar">
+    <h1 class="screen-title" id="screenTitle">Speedometer</h1>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="19" r="2" fill="currentColor"/></svg>
+      </button>
+      <div class="dropdown" id="dropdownMenu" hidden>
+        <button class="dropdown-item" id="openSettings">Settings</button>
+        <button class="dropdown-item" id="openAbout">About</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <section class="view" id="view-speed">
+      <div class="gauge-shell" id="gaugeSpeed">
+        <div class="gauge-placeholder">
+          <span class="ph-label">Speedometer gauge</span>
+          <span class="ph-sub">arrives in Step 3</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-compass" hidden>
+      <div class="gauge-shell" id="gaugeCompass">
+        <div class="gauge-placeholder">
+          <span class="ph-label">Compass gauge</span>
+          <span class="ph-sub">arrives in Step 4</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="stats-row" id="statsSpeed">
+    <div class="stat">
+      <span class="stat-icon">〰️</span>
+      <span class="stat-label">Distance</span>
+      <span class="stat-value">— km</span>
+    </div>
+    <div class="stat">
+      <span class="stat-icon">⌀</span>
+      <span class="stat-label">Avg Speed</span>
+      <span class="stat-value">— km/h</span>
+    </div>
+    <div class="stat">
+      <span class="stat-icon">▲</span>
+      <span class="stat-label">Max Speed</span>
+      <span class="stat-value">— km/h</span>
+    </div>
+  </section>
+
+  <section class="stats-row" id="statsCompass" hidden>
+    <div class="stat wide">
+      <span class="stat-label">Direction</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Lat</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Long</span>
+      <span class="stat-value">—</span>
+    </div>
+  </section>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-target="speed">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path d="M12 12l4-4"/></svg>
+      <span>Speed</span>
+    </button>
+    <button class="nav-btn" data-target="compass">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path d="M14.5 9.5l-2 5-5 2 2-5z"/></svg>
+      <span>Compass</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settingsModal" hidden>
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Settings</h2>
+      <button class="icon-btn" id="closeSettings">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="setting-group">
+        <h3>Theme</h3>
+        <div class="theme-options" id="themeOptions">
+          <button class="swatch" data-theme="blue" style="--sw:#2E8CFF"><span></span>Electric Blue</button>
+          <button class="swatch" data-theme="purple" style="--sw:#A855F7"><span></span>Purple</button>
+          <button class="swatch" data-theme="amber" style="--sw:#FFA726"><span></span>Amber</button>
+          <button class="swatch" data-theme="red" style="--sw:#FF3B30"><span></span>Red</button>
+          <button class="swatch" data-theme="cyan" style="--sw:#22D3EE"><span></span>Cyan</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <h3>Unit</h3>
+        <div class="unit-options" id="unitOptions">
+          <button class="option-btn" data-unit="kmph">km/h</button>
+          <button class="option-btn" data-unit="mph">mph</button>
+          <button class="option-btn" data-unit="kts">kts</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- About Modal -->
+<div class="modal-overlay" id="aboutModal" hidden>
+  <div class="modal">
+    <div class="modal-header">
+      <h2>About</h2>
+      <button class="icon-btn" id="closeAbout">✕</button>
+    </div>
+    <div class="modal-body about-body">
+      <p><strong>Vector</strong> is a small personal project — a GPS speedometer and compass built for everyday use on the road.</p>
+      <p>No accounts, no ads, no data leaving your phone. Just the numbers that matter.</p>
+      <div class="made-with">Made with ♥️ in India</div>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
