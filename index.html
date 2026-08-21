@@ -54,9 +54,22 @@
 
     <section class="view" id="view-compass" hidden>
       <div class="gauge-shell" id="gaugeCompass">
-        <div class="gauge-placeholder">
-          <span class="ph-label">Compass gauge</span>
-          <span class="ph-sub">arrives in Step 4</span>
+        <svg class="gauge-svg" id="compassGaugeSvg" viewBox="0 0 300 300">
+          <circle class="gauge-track" cx="150" cy="150" r="128"></circle>
+          <g id="compassRotor"></g>
+          <path class="compass-marker" d="M150 12 L141 34 L159 34 Z"></path>
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-value" id="headingValue">0°</div>
+          <div class="gauge-unit" id="headingAbbr">N</div>
+          <div class="gauge-gps">
+            <span class="gps-dot" id="compassDot"></span>
+            <span id="compassLabel">COMPASS…</span>
+          </div>
+        </div>
+        <div class="gauge-permission" id="compassPermissionOverlay" hidden>
+          <p id="compassPermissionText">Location access is needed to show your coordinates.</p>
+          <button id="enableCompassBtn">Enable Location</button>
         </div>
       </div>
     </section>
@@ -81,15 +94,15 @@
   <section class="stats-row" id="statsCompass" hidden>
     <div class="stat wide">
       <span class="stat-label">Direction</span>
-      <span class="stat-value">—</span>
+      <span class="stat-value" id="directionValue">—</span>
     </div>
     <div class="stat">
       <span class="stat-label">Lat</span>
-      <span class="stat-value">—</span>
+      <span class="stat-value" id="latValue">—</span>
     </div>
     <div class="stat">
       <span class="stat-label">Long</span>
-      <span class="stat-value">—</span>
+      <span class="stat-value" id="longValue">—</span>
     </div>
   </section>
 
@@ -118,6 +131,7 @@
       <div class="setting-group">
         <h3>Theme</h3>
         <div class="theme-options" id="themeOptions">
+          <button class="swatch" data-theme="green" style="--sw:#22C55E"><span></span>Emerald Green</button>
           <button class="swatch" data-theme="blue" style="--sw:#2E8CFF"><span></span>Electric Blue</button>
           <button class="swatch" data-theme="purple" style="--sw:#A855F7"><span></span>Purple</button>
           <button class="swatch" data-theme="amber" style="--sw:#FFA726"><span></span>Amber</button>
@@ -158,5 +172,6 @@
 <script src="js/app.js"></script>
 <script src="js/geo.js"></script>
 <script src="js/speedometer.js"></script>
+<script src="js/compass.js"></script>
 </body>
 </html>

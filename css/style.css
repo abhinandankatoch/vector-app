@@ -25,6 +25,7 @@ body.theme-purple { --accent: #A855F7; --accent-glow: rgba(168,85,247,0.35); }
 body.theme-amber  { --accent: #FFA726; --accent-glow: rgba(255,167,38,0.35); }
 body.theme-red    { --accent: #FF3B30; --accent-glow: rgba(255,59,48,0.35); }
 body.theme-cyan   { --accent: #22D3EE; --accent-glow: rgba(34,211,238,0.35); }
+body.theme-green  { --accent: #22C55E; --accent-glow: rgba(34,197,94,0.35); }
 
 .gauge-num, .screen-title { font-family: 'Rajdhani', 'Inter', sans-serif; }
 
@@ -143,6 +144,20 @@ body.theme-cyan   { --accent: #22D3EE; --accent-glow: rgba(34,211,238,0.35); }
   font-size: 12px;
   font-weight: 600;
   fill: var(--text-secondary);
+}
+.cardinal-label {
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--accent);
+}
+
+/* Compass */
+#compassRotor {
+  transition: transform 0.35s ease-out;
+}
+.compass-marker {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent-glow));
 }
 
 .gauge-center {
