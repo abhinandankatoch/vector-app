@@ -92,17 +92,3 @@ Since Vector uses GPS and motion sensors, it needs to run over **HTTPS** (or `lo
 python3 -m http.server 8000
 # then open http://localhost:8000 in Chrome
 ```
-
-## Credits
-
-- Icon by [Mihimihi on Flaticon](https://www.flaticon.com/free-icon/bezier-curve_11073118)
-
----
-
-<div align="center">
-
-Made with ♥️ in India
-
-**Abhinandan Katoch**
-
-</div>
